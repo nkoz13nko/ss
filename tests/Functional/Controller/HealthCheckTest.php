@@ -17,8 +17,10 @@ class HealthCheckTest extends WebTestCase
 	{
 		$client = static::createClient();
 		$client->request(Request::METHOD_GET, '/health-check');
-
-		$response = json_decode($client->getResponse()->getContent(), true, 512, JSON_THROW_ON_ERROR);
+		/** @var string $json */
+		$json = $client->getResponse()->getContent();
+		/** @var string[] $response */
+		$response = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
 		self::assertResponseIsSuccessful();
 		$this->assertEquals('ok', $response['status']);
 	}
