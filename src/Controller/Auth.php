@@ -18,8 +18,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\UidNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -44,7 +42,7 @@ class Auth extends BaseController
                 throw new BadRequestHttpException("request is empty");
             }
 
-			/** @var UserSignUpDto $userSignUpDto */
+            /** @var UserSignUpDto $userSignUpDto */
             $userSignUpDto = $serializer->deserialize($rawData, UserSignUpDto::class, 'json');
             $violations = $validator->validate($userSignUpDto);
             if ($violations->count() > 0) {
