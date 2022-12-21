@@ -11,14 +11,14 @@ if (file_exists(dirname(__DIR__).'/config/bootstrap.php')) {
 }
 
 passthru(sprintf(
-	'php "%s/../bin/console" d:d:d --env=test --force --no-interaction',
-	__DIR__
+    'php "%s/../bin/console" d:d:d --env=test --force --no-interaction',
+    __DIR__
 ));
 passthru(sprintf(
-	'php "%s/../bin/console" d:d:c --env=test',
-	__DIR__
+    'php "%s/../bin/console" d:d:c --env=test',
+    __DIR__
 ));
 passthru(sprintf(
-	'php "%s/../bin/console" doctrine:m:m -n --env=test',
-	__DIR__
+    'php "%s/../bin/console" doctrine:m:m -n --env=test',
+    __DIR__
 ));

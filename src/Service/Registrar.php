@@ -30,7 +30,7 @@ class Registrar
     public function register(UserSignUpDto $userSignUpDto): User
     {
         if (null !== $this->userRepository->findOneBy(['email' => $userSignUpDto->getEmail()])) {
-            throw new LogicException("username already in use");
+            throw new LogicException("email already in use");
         }
 
         $user = new User();
