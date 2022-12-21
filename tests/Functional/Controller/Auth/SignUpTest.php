@@ -8,7 +8,7 @@ use App\Tests\Functional\AbstractFunctionalTestCase;
 use JsonException;
 use Symfony\Component\HttpFoundation\Request;
 
-class SignUpTestCase extends AbstractFunctionalTestCase
+class SignUpTest extends AbstractFunctionalTestCase
 {
     /**
      * @throws JsonException
@@ -19,7 +19,7 @@ class SignUpTestCase extends AbstractFunctionalTestCase
             'email' => 'xxx@mail.com',
             'password' => '123456'
         ];
-        $this->request('/api/auth/sign_up', Request::METHOD_POST, $payload);
+        $this->request(Request::METHOD_POST, '/api/auth/sign_up', $payload);
         self::assertResponseIsSuccessful();
     }
 }

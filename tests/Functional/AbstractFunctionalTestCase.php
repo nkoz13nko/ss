@@ -36,7 +36,7 @@ abstract class AbstractFunctionalTestCase extends WebTestCase
      * @throws JsonException
      * @param string[] $payload
      */
-    protected function request(string $route, string $method, ?array $payload = null): void
+    protected function request(string $method, string $route, ?array $payload = null): void
     {
         $this->unauthorizedClient->request(
             $method,
@@ -57,7 +57,7 @@ abstract class AbstractFunctionalTestCase extends WebTestCase
         /** @var string $content */
         $content = $client->getResponse()->getContent();
         /** @var string[] $result */
-        $result =  json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+        $result =  json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         return $result;
     }

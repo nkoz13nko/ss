@@ -9,7 +9,7 @@ use App\Tests\Functional\AbstractFunctionalTestCase;
 use JsonException;
 use Symfony\Component\HttpFoundation\Request;
 
-class SignInTestCase extends AbstractFunctionalTestCase
+class SignInTest extends AbstractFunctionalTestCase
 {
     /**
      * @throws JsonException
@@ -28,7 +28,7 @@ class SignInTestCase extends AbstractFunctionalTestCase
             'password'=> $password
         ];
 
-        $this->request('/api/auth/sign_in', Request::METHOD_POST, $payload);
+        $this->request(Request::METHOD_POST, '/api/auth/sign_in', $payload);
         $response = $this->extractResponse($this->unauthorizedClient);
         self::assertResponseIsSuccessful();
         self::assertArrayHasKey('token', $response);
